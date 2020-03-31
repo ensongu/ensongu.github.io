@@ -40,37 +40,9 @@
       
         <div class="animated fadeInLeft" style="animation-delay: 0.4s">
           <p class="my-4 text-gray-600 font-light hidden lg:block">
-            年华似水匆匆一瞥
+            文章目录
           </p>
-          <div class="animated fadeInLeft social-container hidden lg:block" style="animation-delay: 0.6s">
-            
-              
-            
-              
-            
-              
-            
-              
-                <a href="https://www.zhihu.com/people/zhen-jiang-gu-an-chen" target="_blank" class="mr-4 text-xl text-gray-400 font-light hover:text-gray-900">
-                  <i class="ri-zhihu-line"></i>
-                </a>
-              
-            
-              
-            
-              
-            
-              
-            
-              
-                <a href="https://www.instagram.com/scalpelenson" target="_blank" class="mr-4 text-xl text-gray-400 font-light hover:text-gray-900">
-                  <i class="ri-instagram-line"></i>
-                </a>
-              
-            
-              
-            
-              
+          <div class="toc-container hidden lg:block">
             
           </div>
         </div>
@@ -115,37 +87,105 @@
 </div>
 <div class="mask" onclick="closeMenu()">
 </div>
-      <div class="content-wrapper py-32 lg:p-8 lg:w-3/4">
-        <h2 class="text-lg text-gray-700 mb-8">
-          <i class="ri-bookmark-line"></i> 折腾
-        </h2>
-        
-  <section class="post-item md:flex pb-12 animated fadeIn" :style="{ 'animation-delay': `${0 * 0.2}s` }">
-    
-      <a href="https://ensongu.github.io/post/da-jian-gridea-bo-ke-cai-guo-de-keng/" class="feature-image-wrapper bg-gray-100 rounded-lg flex-shrink-0 mr-8 w-full h-56 h-32 md:w-56 md:h-40">
-        <div class="post-feature-image lazy w-full h-56 h-32 md:w-56 md:h-40" data-bg="'https://ensongu.github.io/post-images/da-jian-gridea-bo-ke-cai-guo-de-keng.jpg'">
+      <div class="content-wrapper py-32 lg:p-8 lg:w-3/4 post-detail animated fadeIn">
+
+
+        <h1 class="text-3xl font-bold lg:mt-16">搭建Gridea博客踩过的坑</h1>
+        <div class="text-sm text-gray-700 lg:my-8">
+          2020/04/01 / 3 min read
         </div>
-      </a>
-    
-    <div class="content">
-      <a href="https://ensongu.github.io/post/da-jian-gridea-bo-ke-cai-guo-de-keng/">
-        <h2 class="post-title text-xl font-extrabold mt-5 md:mt-0">搭建Gridea博客踩过的坑</h2>
-      </a>
-      <div class="post-abstract text-gray-700 font-light my-4">
-        <p>常规的搭建步骤参考<a href="https://gridea.dev/gridea-start/">Gridea主页的说明</a></p>
+        
+          <img class="post-feature-image rounded-lg mx-auto my-4" src="https://ensongu.github.io/post-images/da-jian-gridea-bo-ke-cai-guo-de-keng.jpg" alt="">
+        
+        <div class="post-content yue">
+          <p>常规的搭建步骤参考<a href="https://gridea.dev/gridea-start/">Gridea主页的说明</a></p>
+<!-- more -->
+<p><strong>主要有6个大坑：</strong></p>
+<!-- more -->
+<ol>
+<li>SFTP不好用，即便在远程设置里面的测试远程链接显示测试通过了，再点击同步按钮依然会报错。打开开发者工具，拦截到的错误是“permission denied”，但是我用filezilla工具人工连接SFTP明明是没问题的好吗。经过各种尝试都无解，包括设置账号权限，更改路径等等都无效。遂放弃。<br>
+<img src="https://ensongu.github.io/post-images/1585673821963.png" alt="" loading="lazy"><br>
+<img src="https://ensongu.github.io/post-images/1585673830144.png" alt="" loading="lazy"></li>
+</ol>
+<!-- more -->
+<!-- more -->
+<ol start="2">
+<li>准备用第二种方式，就是github的pages服务。这也是官方教程主推的方式。于是默默连上梯子，一顿操作之后配置好了pages服务，然后断开梯子，结果发现无法同步。。。  也就是说，只要想同步就得连上梯子，那岂不是这产品只能针对有梯子的同学？有情怀的本来就少。。。再加上必须要用梯子。。。</li>
+</ol>
+<!-- more -->
+<!-- more -->
+<ol start="3">
+<li>在查教程的时候顺带发现github的pages服务有内容上限，上限是1GB，也就是说，当我写到1GB的时候，gridea其实就废掉了。。。 虽然纯文字想堆到1GB很难，但总有那么一天吧？而且，万一我插入的图片多呢？</li>
+</ol>
+<!-- more -->
+<!-- more -->
+<ol start="4">
+<li>好不容易同步完成了，发现页面样式怎么都加载不出来，看起来奇丑无比。一顿谷歌猛如虎，最终在Gridea的github项目评论区查到了答案，原来是github pages针对个人的服务只支持https，而Gridea桌面工具的远程配置里，域名后面的前缀必须与真实前缀保持一致，所以要改成https，这点官方教程也没强调。改完再同步，恢复正常。</li>
+</ol>
+<!-- more -->
+<!-- more -->
+<ol start="5">
+<li>
+<p>突然发现文章下面不能评论，还好庆幸一下在Gridea桌面工具里发现了自带评论设置。打开一看顿时失望，自带的评论工具是 gitalk 和 disqus，这2个依然全部都是需要梯子的。一番检索之后又是在Gridea项目的github上评论区找到了答案，就是用valine。可是主题不支持设置怎么办？只好手动修改主题文件。。。具体方法如下：<br>
+<img src="https://ensongu.github.io/post-images/1585672952338.png" alt="" loading="lazy"></p>
+<figure data-type="image" tabindex="1"><img src="https://ensongu.github.io/post-images/1585673097448.png" alt="" loading="lazy"></figure>
+<p>中间还隐藏着一个小坑，我使用的主题是 Walker 如果按照截图中说的把代码片段放在文件末尾的话，会直接让评论宽度顶着浏览器的左右边框，与上面的样式格格不入。经过分析，手工把代码片段贴在了往上2个的 div 层级里。才完美展示：<br>
+<img src="https://ensongu.github.io/post-images/1585673298757.png" alt="" loading="lazy"></p>
+</li>
+</ol>
+<!-- more -->
+<!-- more -->
+<ol start="6">
+<li>写了2个测试评论，发布之后很满意，之后就很自然的想到了要把测试评论删掉。结果问题来了，找不到删除的地方。由于评论是使用了leancloud服务的，所以海得跑到leancloud的后台原始配置菜单里才能删除，如下：<br>
+<img src="https://ensongu.github.io/post-images/1585673510240.png" alt="" loading="lazy"></li>
+</ol>
+<!-- more -->
+<!-- more -->
+<!-- more -->
+<p>😂经过以上一番折腾终于搞定了💪，总结一下，其实最致命的问题就是：github pages容量有限，只有1GB⚡️💥，以及无法通过SFTP同步到自己的服务器上，这样就会很被动，希望作者能赶紧想出解决方案。</p>
+<!-- more -->
 
+        </div>
+
+        
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://ensongu.github.io/tag/TYmmcFGtm/">
+            <span class="flex-auto">折腾</span>
+          </a>
+        
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://ensongu.github.io/tag/3PcIGXr7t4/">
+            <span class="flex-auto">建站</span>
+          </a>
+        
+
+
+        <div class="flex justify-between py-8">
+          
+
+          
+            <div class="next-post">
+              <a href="https://ensongu.github.io/post/hello-gridea/">
+                <h3 class="post-title">
+                  Hello Gridea
+                  <i class="ri-arrow-right-line"></i>
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+
+        
+	<div id="vcomments"></div>
+	<script>
+		new Valine({
+		    el: '#vcomments',
+		    appId: 'UlSGVMAPfAiUCAA5f9FhBJ3j-gzGzoHsz',
+		    appKey: 'EGUAbPGnJ2GjxbpVkHoIvbEF'
+		})
+	 </script>
       </div>
-      <div class="text-gray-400 text-sm font-light">2020/04/01 / 3 min read</div>
     </div>
-  </section>
 
-        <div class="pagination-container animated fadeIn">
-  
-  
-</div>
 
-      </div>
-    </div>
 
     <script src="https://ensongu.github.io/media/prism.js"></script>  
 <script>
