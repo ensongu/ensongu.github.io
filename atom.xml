@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://ensongu.github.io</id>
     <title>顾安臣</title>
-    <updated>2020-03-31T18:39:24.716Z</updated>
+    <updated>2020-03-31T18:40:32.935Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://ensongu.github.io"/>
     <link rel="self" href="https://ensongu.github.io/atom.xml"/>
@@ -12,8 +12,8 @@
     <rights>All rights reserved 2020, 顾安臣</rights>
     <entry>
         <title type="html"><![CDATA[搭建Gridea博客踩过的坑]]></title>
-        <id>https://ensongu.github.io/post/da-jian-gridea-bo-ke-cai-guo-de-keng/</id>
-        <link href="https://ensongu.github.io/post/da-jian-gridea-bo-ke-cai-guo-de-keng/">
+        <id>https://ensongu.github.io/da-jian-gridea-bo-ke-cai-guo-de-keng/</id>
+        <link href="https://ensongu.github.io/da-jian-gridea-bo-ke-cai-guo-de-keng/">
         </link>
         <updated>2020-04-01T12:08:17.000Z</updated>
         <summary type="html"><![CDATA[<p>常规的搭建步骤参考<a href="https://gridea.dev/gridea-start/">Gridea主页的说明</a></p>
@@ -68,8 +68,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[Hello Gridea]]></title>
-        <id>https://ensongu.github.io/post/hello-gridea/</id>
-        <link href="https://ensongu.github.io/post/hello-gridea/">
+        <id>https://ensongu.github.io/hello-gridea/</id>
+        <link href="https://ensongu.github.io/hello-gridea/">
         </link>
         <updated>2018-12-11T16:00:00.000Z</updated>
         <content type="html"><![CDATA[<!-- more -->
